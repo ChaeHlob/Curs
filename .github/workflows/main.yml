@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker run -ti my-image bash -c "echo Hello, my name is ${YOUR_NAME} ${YOUR_LAST_NAME}"
+          docker run -ti my-image bash -c "echo Hello, my name is ${Ілля} ${Герман}"
