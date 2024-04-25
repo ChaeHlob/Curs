@@ -1,19 +1,24 @@
+name: CI
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  show_name_job:  # ім'я вашого завдання
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout коду
-        uses: actions/checkout@v2
-      
-      - name: Запуск зображення Docker
-        run: docker run -d your_image_name
-      
-      - name: Показ прізвища та імені
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
         run: |
-          echo "Прізвище: Герман"
-          echo "Ім'я: Ілля"
+          docker build -t my-image .
+
+      - name: Run Docker container
+        run: |
+          docker run -ti my-image bash -c "echo Hello, my name is ${YOUR_NAME} ${YOUR_LAST_NAME}"
