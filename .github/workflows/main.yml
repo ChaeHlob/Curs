@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  show_name_job:  # ім'я вашого завдання
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout коду
+        uses: actions/checkout@v2
+      
+      - name: Запуск зображення Docker
+        run: docker run -d your_image_name
+      
+      - name: Показ прізвища та імені
+        run: |
+          echo "Прізвище: Герман"
+          echo "Ім'я: Ілля"
